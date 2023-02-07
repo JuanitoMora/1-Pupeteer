@@ -1,0 +1,9 @@
+{
+    "printWith" : 100,
+    "singleQuote" : true,
+    "useTabs" : true,
+    "tabWith" : 2,
+    "semi" : false,
+    "trailingComma" : "es5",
+    "braketSameLine" : true
+}
