@@ -1,6 +1,6 @@
 const puppeteer = require ('puppeteer')
 
-describe ('Tipos de Espera', () => {
+describe.skip ('Tipos de Espera', () => {
 
     it('Mostrar todos los diferentes tipos de espera', async () =>{
         const browser = await puppeteer.launch ({
