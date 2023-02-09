@@ -2,6 +2,9 @@ const puppeteer = require ('puppeteer')
 
 describe.skip ('Tipos de Espera', () => {
 
+    //Tiempo de espera de Jest de todo el set
+    jest.setTimeout(10000)
+
     it('Mostrar todos los diferentes tipos de espera', async () =>{
         const browser = await puppeteer.launch ({
 
@@ -11,6 +14,13 @@ describe.skip ('Tipos de Espera', () => {
         })
 
         const page = await browser.newPage()
+
+        //Tiempo de espera de todos los elementos a intervenir
+        page.setDefaultTimeout(10000)
+        //Tiempo de espera en la navegación entre páginas
+        page.setDefaultNavigationTimeout(10000)
+
+
         await page.goto('https://platzi.com/', {waitUntil : 'networkidle2'})
 
         //Espera implicita
@@ -42,8 +52,10 @@ describe.skip ('Tipos de Espera', () => {
         //await observaResize
 
         await page.click('#closeSmallModal')
-        await page.waitForFunction(()=> !document.querySelector('#example-modal-sizes-title-sm'))
-
+        await page.waitForFunction(()=> !document.querySelector('#example-modal-sizes-title-sm'),
+        //Tiempo de espera en la función especifica
+        {timeout:30000})
+        
         await browser.close
     },350000)
 })
